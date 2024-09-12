@@ -5,12 +5,11 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from rest_framework import status, serializers
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
-from users.models import User
-from users.permissions import IsOwner
-from users.serializers import UserProfileSerializer, UserCreateUpdateSerializer
-
+from users.serializers import UserProfileSerializer, UserUpdateSerializer
 
 from django.shortcuts import redirect
 from rest_framework.views import APIView
@@ -18,6 +17,7 @@ from rest_framework.views import APIView
 from users.google_auth import (
     GoogleSdkLoginFlowService,
 )
+
 
 UserModel = get_user_model()
 
@@ -89,11 +89,16 @@ class GoogleLoginApi(PublicApi):
 
         login(request, user)
 
+        refresh = RefreshToken.for_user(user)
+        tokens = {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }
         result = {
             "id_token_decoded": id_token_decoded,
             "user_info": user_info,
+            "tokens": tokens
         }
-
         return Response(result)
 
 
@@ -117,10 +122,9 @@ class UserProfileAPIView(RetrieveAPIView):
 
 
 class UserUpdateAPIView(UpdateAPIView):
-    serializer_class = UserCreateUpdateSerializer
-    permission_classes = (IsOwner,)
+    serializer_class = UserUpdateSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_object(self):
-        obj = get_object_or_404(UserModel, pk=self.kwargs.get('pk'))
-        self.check_object_permissions(self.request, obj)
+        obj = self.request.user
         return obj

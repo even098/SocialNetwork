@@ -13,6 +13,7 @@ from datetime import timedelta
 from pathlib import Path
 
 import environ
+from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 
 env = environ.Env()
@@ -108,7 +109,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -170,7 +170,7 @@ DJOSER = {
     'ACTIVATION_URL': 'users/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
-        'user_create': 'users.serializers.UserCreateUpdateSerializer',
+        'user_create': 'users.serializers.UserCreateSerializer',
         'user': 'users.serializers.UserProfileSerializer',
         'current_user': 'users.serializers.UserProfileSerializer',
     },

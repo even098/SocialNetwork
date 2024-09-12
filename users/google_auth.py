@@ -1,13 +1,17 @@
 import google_auth_oauthlib
 from attrs import define
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
-from django.urls import reverse_lazy, reverse
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ImproperlyConfigured, ObjectDoesNotExist
+from django.urls import reverse_lazy
 
 import google_auth_oauthlib.flow
 import requests
 import jwt
 from rest_framework.exceptions import AuthenticationFailed
+
+
+UserModel = get_user_model()
 
 
 @define
@@ -60,6 +64,7 @@ class GoogleSdkLoginFlowService:
     GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/auth"
     GOOGLE_ACCESS_TOKEN_OBTAIN_URL = "https://oauth2.googleapis.com/token"
     GOOGLE_USER_INFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
+    GOOGLE_USER_ADDITIONAL_INFO_URL = "https://people.googleapis.com/v1/people/me"
 
     # Add auth_provider_x509_cert_url if you want verification on JWTS such as ID tokens
     GOOGLE_AUTH_PROVIDER_CERT_URL = ""
@@ -67,6 +72,8 @@ class GoogleSdkLoginFlowService:
     SCOPES = [
         "https://www.googleapis.com/auth/userinfo.email",
         "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/user.birthday.read",
+        "https://www.googleapis.com/auth/user.gender.read",
         "openid",
     ]
 
@@ -100,16 +107,46 @@ class GoogleSdkLoginFlowService:
 
     def get_user_info(self, *, google_tokens: GoogleAccessTokens):
         access_token = google_tokens.access_token
-
         response = requests.get(
             self.GOOGLE_USER_INFO_URL,
             params={"access_token": access_token}
         )
 
+        # if additional_info.status_code == 200:
+        #     add_info = additional_info.json()
+        #     print(add_info)
+
         if not response.ok:
             raise AuthenticationFailed("Failed to obtain user info from Google.")
 
-        return response.json()
+        user_info = response.json()
+        email = user_info.get("email")
+
+        try:
+            user = UserModel.objects.get(email=email)
+        except ObjectDoesNotExist:
+            response = requests.get(
+                self.GOOGLE_USER_ADDITIONAL_INFO_URL,
+                params={"access_token": access_token, "personFields": "genders,birthdays"}
+            )
+            additional_info = response.json()
+
+            gender = additional_info.get('genders', [{}])[0].get('value', 'other')
+            birthday_data = additional_info.get('birthdays', [{}])[0].get('date', {})
+            year = birthday_data.get('year', None)
+            month = birthday_data.get('month', None)
+            day = birthday_data.get('day', None)
+
+            birthday = f"{year}-{month:02d}-{day:02d}" if year and month and day else None
+
+            user = UserModel.objects.create(
+                username=user_info.get("name"),
+                avatar=user_info.get("picture"),
+                date_of_birth=birthday,
+                gender=gender,
+                email=email,
+            )
+        return user_info
 
     def get_tokens(self, *, code: str, state: str) -> GoogleAccessTokens:
         redirect_uri = self._get_redirect_uri()
@@ -128,6 +165,7 @@ class GoogleSdkLoginFlowService:
             id_token=access_credentials_payload["id_token"],
             access_token=access_credentials_payload["access_token"]
         )
+        user_info = self.get_user_info(google_tokens=google_tokens)
 
         return google_tokens
 
@@ -146,5 +184,3 @@ class GoogleSdkLoginFlowService:
             prompt="select_account",
         )
         return authorization_url, state
-
-

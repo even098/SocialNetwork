@@ -1,32 +1,31 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers, status
-from rest_framework.response import Response
 
-from users.models import User
+
+UserModel = get_user_model()
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = get_user_model()
-        exclude = ['id', 'password', 'email', 'is_staff', 'is_superuser', 'is_active', 'groups', 'user_permissions',
-                   'last_login', 'first_name', 'last_name']
+        model = UserModel
+        fields = ['username', 'full_name', 'avatar', 'date_of_birth', 'bio', 'gender', 'location', 'followers_count',
+                  'following_count']
 
 
-class UserCreateUpdateSerializer(serializers.ModelSerializer):
+class UserCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = get_user_model()
-        fields = ('username', 'email', 'password', 'full_name', 'avatar', 'date_of_birth', 'bio', 'gender',
-                  'location')
+        model = UserModel
+        fields = ['username', 'email', 'password', 'full_name', 'avatar', 'date_of_birth', 'bio', 'gender',
+                  'location']
         extra_kwargs = {
-            'password': {'write_only': True},
             'avatar': {'required': False},
             'bio': {'required': False},
             'location': {'required': False}
         }
 
     def create(self, validated_data):
-        if not get_user_model().objects.filter(email=validated_data['email']).exists():
-            user = get_user_model().objects.create_user(
+        if not UserModel.objects.filter(email=validated_data['email']).exists():
+            user = UserModel.objects.create_user(
                 username=validated_data['username'],
                 email=validated_data['email'],
                 password=validated_data['password'],
@@ -39,17 +38,18 @@ class UserCreateUpdateSerializer(serializers.ModelSerializer):
                 is_active=False
             )
             return user
-
         raise serializers.ValidationError({'message': 'Email already exists'})
 
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-        if password:
-            instance.set_password(password)
 
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ['username', 'email', 'full_name', 'avatar', 'date_of_birth', 'bio', 'gender', 'location']
+        read_only_fields = ['email', 'date_of_birth', 'gender']
+
+    def update(self, instance, validated_data):
         for key, value in validated_data.items():
             if getattr(instance, key) != value:
                 setattr(instance, key, value)
         instance.save()
-
         return instance

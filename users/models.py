@@ -9,7 +9,7 @@ class User(AbstractUser):
     bio = models.TextField(max_length=100, blank=True, null=True)
     gender = models.CharField(
         max_length=10,
-        choices=[('M', 'Male'), ('F', 'Female'), ('O', 'Other')],
+        choices=[('m', 'male'), ('f', 'Female'), ('f', 'Other')],
         blank=True
     )
     location = models.CharField(max_length=255, blank=True)
