@@ -4,19 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment="google-login commit">
+    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment="  posts, register commit">
+      <change afterPath="$PROJECT_DIR$/comments/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feed/post_recommendation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feed/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feed/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/posts/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relationships/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relationships/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialNetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/google_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/google_auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialNetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feed/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feed/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/relationships/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/relationships/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/relationships/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/relationships/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,24 +56,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.SocialNetwork.executor&quot;: &quot;Run&quot;,
-    &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.SocialNetwork.executor": "Run",
+    "Python.google_auth.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sapar\PycharmProjects\SocialNetwork\users" />
@@ -133,6 +151,18 @@
       <updated>1724924659578</updated>
       <workItem from="1724924737860" duration="40423000" />
       <workItem from="1725560488567" duration="15478000" />
+      <workItem from="1725786722998" duration="37431000" />
+      <workItem from="1726385788887" duration="13739000" />
+      <workItem from="1726419305193" duration="6453000" />
+      <workItem from="1726808682989" duration="15000" />
+      <workItem from="1726828190079" duration="1077000" />
+      <workItem from="1727432503576" duration="1817000" />
+      <workItem from="1727435463317" duration="2925000" />
+      <workItem from="1728128871348" duration="601000" />
+      <workItem from="1728492268140" duration="12986000" />
+      <workItem from="1729338753166" duration="27000" />
+      <workItem from="1729962165791" duration="18878000" />
+      <workItem from="1730460362241" duration="4264000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -158,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725561689418</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="  posts, register commit">
+      <option name="closed" value="true" />
+      <created>1726115922577</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726115922577</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,7 +219,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <MESSAGE value="google-login commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="google-login commit" />
+    <MESSAGE value="  posts, register commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="  posts, register commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SocialNetwork$google_auth.coverage" NAME="google_auth Coverage Results" MODIFIED="1725466326500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/users" />
