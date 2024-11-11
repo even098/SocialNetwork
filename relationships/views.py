@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db.models import F
-from rest_framework import status, exceptions
-from rest_framework.generics import CreateAPIView, DestroyAPIView, ListAPIView
+from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -28,7 +28,7 @@ class FollowUserAPIView(APIView):
 
         Follow.objects.create(follower=follower, following=following)
         get_user_model().objects.filter(id=follower.id).update(following_count=F('following_count') + 1)
-        get_user_model().objects.filter(id=following).update(followers_count=F('followers_count') + 1)
+        get_user_model().objects.filter(id=following.id).update(followers_count=F('followers_count') + 1)
         return Response({"detail": "Successfully followed the user."})
 
 

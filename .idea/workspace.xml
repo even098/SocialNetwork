@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment="  posts, register commit">
-      <change afterPath="$PROJECT_DIR$/comments/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feed/post_recommendation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feed/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feed/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/posts/permissions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/relationships/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/relationships/urls.py" afterDir="false" />
+    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment=" comments and following logic commit">
+      <change afterPath="$PROJECT_DIR$/notifications/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notifications/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notifications/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SocialNetwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SocialNetwork.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialNetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialNetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feed/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feed/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/notifications/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notifications/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notifications/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/relationships/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/relationships/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/relationships/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/relationships/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +152,7 @@
       <workItem from="1728492268140" duration="12986000" />
       <workItem from="1729338753166" duration="27000" />
       <workItem from="1729962165791" duration="18878000" />
-      <workItem from="1730460362241" duration="4264000" />
+      <workItem from="1730460362241" duration="28082000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -196,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726115922577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=" comments and following logic commit">
+      <option name="closed" value="true" />
+      <created>1730651452111</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730651452111</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +218,8 @@
     <MESSAGE value="init commit" />
     <MESSAGE value="google-login commit" />
     <MESSAGE value="  posts, register commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="  posts, register commit" />
+    <MESSAGE value=" comments and following logic commit" />
+    <option name="LAST_COMMIT_MESSAGE" value=" comments and following logic commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SocialNetwork$google_auth.coverage" NAME="google_auth Coverage Results" MODIFIED="1725466326500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/users" />

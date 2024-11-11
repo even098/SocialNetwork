@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/v1/feed/', include('feed.urls')),
     path('api/v1/comments/', include('comments.urls')),
     path('api/v1/relationships/', include('relationships.urls')),
+    path('api/v1/notifications/', include('notifications.urls')),
 ]
