@@ -50,10 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
     'feed.apps.FeedConfig',
+    'chats.apps.ChatConfig',
     'comments.apps.CommentsConfig',
     'notifications.apps.NotificationsConfig',
     'search.apps.SearchConfig',
@@ -62,7 +64,16 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'taggit',
+    'channels',
 ]
+
+ASGI_APPLICATION = 'SocialNetwork.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
