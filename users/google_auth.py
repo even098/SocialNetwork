@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 import google_auth_oauthlib.flow
 import requests
 import jwt
+from django.utils.text import slugify
 from rest_framework.exceptions import AuthenticationFailed
 
 
@@ -137,11 +138,20 @@ class GoogleSdkLoginFlowService:
             month = birthday_data.get('month', None)
             day = birthday_data.get('day', None)
 
+            username_base = slugify(user_info.get("name", "user"))
+            username = username_base
+
+            counter = 1
+            while UserModel.objects.filter(username=username).exists():
+                username = f"{username_base}_{counter}"
+                counter += 1
+
             birthday = f"{year}-{month:02d}-{day:02d}" if year and month and day else None
 
             user = UserModel.objects.create(
-                username=user_info.get("name"),
-                avatar=user_info.get("picture"),
+                username=username,
+                full_name=user_info.get('name'),
+                avatar=user_info.get('picture'),
                 date_of_birth=birthday,
                 gender=gender,
                 email=email,

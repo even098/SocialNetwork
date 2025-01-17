@@ -1,14 +1,17 @@
 from rest_framework import serializers
 
+from chats.serializers import UserSerializer
 from comments.models import Comment
 from posts.models import Post
 
 
 class CommentsSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = Comment
-        fields = ['id', 'text', 'user', 'post']
-        read_only_fields = ['id', 'user', 'post']
+        fields = ['id', 'text', 'user']
+        read_only_fields = ['id', 'user']
 
     def create(self, validated_data):
         post_id = self.context['post_id']

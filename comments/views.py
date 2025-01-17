@@ -10,15 +10,6 @@ from comments.permissions import IsOwner
 from comments.models import Like
 
 
-class CommentListAPIView(ListAPIView):
-    model = Comment
-    serializer_class = CommentsSerializer
-
-    def get_queryset(self):
-        post_id = self.kwargs['post_id']
-        return Comment.objects.filter(id=post_id)
-
-
 class CommentCreateAPIView(CreateAPIView):
     model = Comment
     serializer_class = CommentsSerializer

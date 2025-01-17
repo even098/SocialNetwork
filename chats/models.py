@@ -1,6 +1,7 @@
 import uuid
 
 from django.contrib.auth import get_user_model
+from django.contrib.postgres.search import SearchVectorField, SearchVector
 from django.db import models
 
 
@@ -20,9 +21,14 @@ class Message(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)  # Для функционала отметки прочитанности
+    search_vector = SearchVectorField(null=True)
 
     class Meta:
         ordering = ['created_at']
 
+    # def save(self, *args, **kwargs):
+    #     self.search_vector = SearchVector('text')
+    #     super().save(*args, **kwargs)
+
     def __str__(self):
-        return f"Message from {self.sender} in chat {self.chat.id}."
+        return f"{self.sender}: {self.text}"

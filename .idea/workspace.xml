@@ -4,15 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment=" notifications done commit">
-      <change afterPath="$PROJECT_DIR$/chats/consumers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chats/routing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chats/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chats/urls.py" afterDir="false" />
+    <list default="true" id="e725daf1-9f36-4ffd-b733-92dfb46dccb3" name="Changes" comment="before group chats commit">
+      <change afterPath="$PROJECT_DIR$/chats/a_urls_explanation.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chats/paginators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chats/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/search/filters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/search/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/search/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialNetwork/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/asgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialNetwork/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialNetwork/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialNetwork/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/consumers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/routing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chats/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/chats/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/google_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/google_auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +51,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="95621f9b-c4b8-41b8-990d-b9d37ce48b08" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -42,31 +63,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.SocialNetwork.executor&quot;: &quot;Run&quot;,
-    &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.SocialNetwork.executor": "Run",
+    "Django tests.Test: chats.tests.TestChatInfoAPIView.executor": "Run",
+    "Django tests.Test: chats.tests.TestChatInfoAPIView.test_chat_info.executor": "Run",
+    "Django tests.Test: chats.tests.TestChatsListCreateAPIView.executor": "Run",
+    "Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_chats_create.executor": "Run",
+    "Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_permissions.executor": "Run",
+    "Django tests.Test: chats.tests.executor": "Run",
+    "Python.google_auth.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sapar\PycharmProjects\SocialNetwork" />
       <recent name="C:\Users\sapar\PycharmProjects\SocialNetwork\users" />
     </key>
   </component>
-  <component name="RunManager" selected="Django Server.SocialNetwork">
-    <configuration name="google_auth" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Django tests.Test: chats.tests">
+    <configuration name="Test: chats.tests" type="DjangoTestsConfigurationType" temporary="true">
       <module name="SocialNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,18 +106,100 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/users" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/users/google_auth.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="TARGET" value="chats.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: chats.tests.TestChatInfoAPIView" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="SocialNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="chats.tests.TestChatInfoAPIView" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: chats.tests.TestChatsListCreateAPIView" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="SocialNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="chats.tests.TestChatsListCreateAPIView" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: chats.tests.TestChatsListCreateAPIView.test_chats_create" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="SocialNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="chats.tests.TestChatsListCreateAPIView.test_chats_create" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: chats.tests.TestChatsListCreateAPIView.test_permissions" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="SocialNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="chats.tests.TestChatsListCreateAPIView.test_permissions" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
       <method v="2" />
     </configuration>
     <configuration name="SocialNetwork" type="Python.DjangoServer" factoryName="Django server">
@@ -114,16 +227,28 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.SocialNetwork" />
+      <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView" />
+      <item itemvalue="Django tests.Test: chats.tests.TestChatInfoAPIView" />
+      <item itemvalue="Django tests.Test: chats.tests" />
+      <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_chats_create" />
+      <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_permissions" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.google_auth" />
+        <item itemvalue="Django tests.Test: chats.tests" />
+        <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView" />
+        <item itemvalue="Django tests.Test: chats.tests.TestChatInfoAPIView" />
+        <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_permissions" />
+        <item itemvalue="Django tests.Test: chats.tests.TestChatsListCreateAPIView.test_chats_create" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+        <option value="bundled-python-sdk-c69650fc56ca-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15619.17" />
       </set>
     </attachedChunks>
   </component>
@@ -156,7 +281,13 @@
       <workItem from="1734531698405" duration="13896000" />
       <workItem from="1735147050314" duration="73000" />
       <workItem from="1735221298473" duration="4799000" />
-      <workItem from="1735318253131" duration="1223000" />
+      <workItem from="1735318253131" duration="3837000" />
+      <workItem from="1735486316070" duration="6201000" />
+      <workItem from="1735555980146" duration="701000" />
+      <workItem from="1735630249491" duration="17717000" />
+      <workItem from="1735910896995" duration="64978000" />
+      <workItem from="1737112977754" duration="2033000" />
+      <workItem from="1737115260471" duration="2803000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -206,7 +337,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731333120308</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="before group chats commit">
+      <option name="closed" value="true" />
+      <created>1735321976512</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1735321976512</updated>
+    </task>
+    <task id="LOCAL-00008" summary="before group chats commit">
+      <option name="closed" value="true" />
+      <created>1735321991436</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1735321991436</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,9 +379,16 @@
     <MESSAGE value="  posts, register commit" />
     <MESSAGE value=" comments and following logic commit" />
     <MESSAGE value=" notifications done commit" />
-    <option name="LAST_COMMIT_MESSAGE" value=" notifications done commit" />
+    <MESSAGE value="before group chats commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="before group chats commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests_TestChatInfoAPIView.coverage" NAME="Test: chats.tests.TestChatInfoAPIView Coverage Results" MODIFIED="1736703880236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests_TestChatsListCreateAPIView_test_permissions.coverage" NAME="Test: chats.tests.TestChatsListCreateAPIView.test_permissions Coverage Results" MODIFIED="1736703614267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests.coverage" NAME="Test: chats.tests Coverage Results" MODIFIED="1736705748651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests_TestChatInfoAPIView_test_chat_info.coverage" NAME="Test: chats.tests.TestChatInfoAPIView.test_chat_info Coverage Results" MODIFIED="1736611405570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests_TestChatsListCreateAPIView.coverage" NAME="Test: chats.tests Coverage Results" MODIFIED="1736706055930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/SocialNetwork$google_auth.coverage" NAME="google_auth Coverage Results" MODIFIED="1725466326500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/users" />
+    <SUITE FILE_PATH="coverage/SocialNetwork$Test__chats_tests_TestChatsListCreateAPIView_test_chats_create.coverage" NAME="Test: chats.tests.TestChatsListCreateAPIView.test_chats_create Coverage Results" MODIFIED="1736703338965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

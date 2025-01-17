@@ -1,12 +1,14 @@
 from django.http import HttpResponse
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from posts.models import Post, Like
-from posts.serializers import PostCreateSerializer
+from comments.models import Comment
+from comments.serializers import CommentsSerializer
+from posts.models import Post, Like, PostView
+from posts.serializers import PostCreateSerializer, PostSerializer
 from posts.permissions import IsOwner
 
 
@@ -51,3 +53,16 @@ class LikePostAPIView(APIView):
         else:
             like.delete()
             return Response({"message": "Post unliked", "likes_count": post.likes_count()}, status=status.HTTP_200_OK)
+
+
+class PostCommentListAPIView(APIView):
+    def get(self, request, post_id):
+        try:
+            post = Post.objects.get(id=post_id)
+            serialized_post = PostSerializer(post).data
+            comments = Comment.objects.filter(post=post)
+            serialized_comments = CommentsSerializer(comments, many=True).data
+            PostView.objects.create(post=post, user=request.user)
+            return Response(data={'post': serialized_post, 'comments': serialized_comments}, status=status.HTTP_200_OK)
+        except Post.DoesNotExist:
+            return Response(data={'error': 'Post not found'}, status=status.HTTP_404_NOT_FOUND)
