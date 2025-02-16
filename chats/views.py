@@ -55,6 +55,12 @@ class ChatMessagesAPIView(ListCreateAPIView):
 
         return Message.objects.filter(chat=chat).order_by('created_at')
 
+    def perform_create(self, serializer):
+        chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
+        self.check_object_permissions(self.request, chat)
+
+        serializer.save(chat=chat, sender=self.request.user)
+
 
 class UnreadMessagesAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -66,13 +72,16 @@ class UnreadMessagesAPIView(APIView):
                 .annotate(
                     unread_count=Count(
                         'messages',
-                        filter=Q(messages__is_read=False) | ~Q(messages__sender=user)
+                        filter=Q(messages__is_read=False) & ~Q(messages__sender=user)
                     )
                  )
                 .aggregate(total_unread=Sum('unread_count'))['total_unread']
         )
 
-        return Response(data={'unread_messages_count': unread_messages_count}, status=status.HTTP_200_OK)
+        return Response(
+            data={'unread_messages_count': unread_messages_count if unread_messages_count else 0},
+            status=status.HTTP_200_OK
+        )
 
 
 class ChatMessagesMarkAsReadAPIView(UpdateAPIView):
@@ -99,7 +108,6 @@ class ChatMessagesMarkAsReadAPIView(UpdateAPIView):
                 "updated_count": updated_count
             }
         )
-
         return Response(data={"detail": f"{updated_count} messages marked as read."}, status=status.HTTP_200_OK)
 
 
@@ -111,5 +119,7 @@ class ChatConnectURLAPIView(APIView):
         chat = get_object_or_404(Chat, id=chat_id)
         self.check_object_permissions(self.request, chat)
 
-        return Response(data={'websocket_url': f'ws://{request.get_host()}/ws/chat/{chat_id}/'},
-                        status=status.HTTP_200_OK)
+        return Response(
+            data={'websocket_url': f'ws://{request.get_host()}/ws/chat/{chat_id}/'},
+            status=status.HTTP_200_OK
+        )

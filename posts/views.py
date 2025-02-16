@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView, ListAPIView
@@ -62,7 +63,10 @@ class PostCommentListAPIView(APIView):
             serialized_post = PostSerializer(post).data
             comments = Comment.objects.filter(post=post)
             serialized_comments = CommentsSerializer(comments, many=True).data
-            PostView.objects.create(post=post, user=request.user)
+            try:
+                PostView.objects.create(post=post, user=request.user)
+            except IntegrityError:
+                pass
             return Response(data={'post': serialized_post, 'comments': serialized_comments}, status=status.HTTP_200_OK)
         except Post.DoesNotExist:
             return Response(data={'error': 'Post not found'}, status=status.HTTP_404_NOT_FOUND)

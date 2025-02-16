@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
 from chats.serializers import UserSerializer
@@ -7,18 +8,19 @@ from posts.models import Post
 
 class CommentsSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+    post_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Comment
-        fields = ['id', 'text', 'user']
+        fields = ['id', 'text', 'user', 'post_id']
         read_only_fields = ['id', 'user']
 
     def create(self, validated_data):
-        post_id = self.context['post_id']
-        post = Post.objects.get(id=post_id)
+        post_id = validated_data.get('post_id')
+        post = get_object_or_404(Post, id=post_id)
 
         comment = Comment.objects.create(
-            text=validated_data['text'],
+            text=validated_data.get('text'),
             user=self.context['request'].user,
             post=post
         )

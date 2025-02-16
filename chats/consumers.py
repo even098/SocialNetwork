@@ -14,8 +14,8 @@ from search.serializers import MessageSearchSerializer
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.chat_id = self.scope["url_route"]["kwargs"]["chat_id"]
-        chat = await database_sync_to_async(get_object_or_404)(Chat, id=self.chat_id)
-        user = self.scope['user']
+        # chat = await database_sync_to_async(get_object_or_404)(Chat, id=self.chat_id)
+        # user = self.scope['user']
 
         query_params = parse_qs(self.scope["query_string"].decode("utf-8"))
         message_id = query_params.get("message_id", [None])[0]
@@ -64,8 +64,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
             await self.send(text_data=json.dumps({
                 "type": "read_confirmation",
-                "reader id": user_id,
-                "read messages": message_ids,
+                "reader_id": user_id,
+                "read_messages": message_ids,
             }))
         except Chat.DoesNotExist:
             await self.send(text_data=json.dumps({

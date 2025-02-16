@@ -18,7 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_views(self, obj):
         try:
-            return PostView.objects.get(post=obj).count()
+            return PostView.objects.filter(post=obj).count()
         except PostView.DoesNotExist:
             return 0
 

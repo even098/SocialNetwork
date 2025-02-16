@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.generics import ListAPIView, UpdateAPIView, CreateAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, UpdateAPIView, CreateAPIView, DestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,17 +8,13 @@ from comments.models import Comment
 from comments.serializers import CommentsSerializer
 from comments.permissions import IsOwner
 from comments.models import Like
+from posts.models import Post
 
 
 class CommentCreateAPIView(CreateAPIView):
     model = Comment
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context['post_id'] = self.kwargs['post_id']
-        return context
 
 
 class CommentUpdateAPIView(UpdateAPIView):
@@ -27,8 +23,10 @@ class CommentUpdateAPIView(UpdateAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
     def get_object(self):
-        post_id = self.kwargs.get('post_id')
-        return Comment.objects.get(post_id=post_id)
+        comment_id = self.kwargs.get('comment_id')
+        comment = Comment.objects.get(id=comment_id)
+        self.check_object_permissions(self.request, comment)
+        return comment
 
 
 class CommentDeleteAPIView(DestroyAPIView):
@@ -37,8 +35,10 @@ class CommentDeleteAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
     def get_object(self):
-        post_id = self.kwargs.get('post_id')
-        return Comment.objects.get(post_id=post_id)
+        comment_id = self.kwargs.get('comment_id')
+        comment = Comment.objects.get(id=comment_id)
+        self.check_object_permissions(self.request, comment)
+        return comment
 
 
 class LikeCommentAPIView(APIView):
