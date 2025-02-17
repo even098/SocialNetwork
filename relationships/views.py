@@ -21,10 +21,10 @@ class FollowUserAPIView(APIView):
             return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
 
         if Follow.objects.filter(follower=follower, following=following).exists():
-            return Response({"detail": "You are already following this user."})
+            return Response({"detail": "You are already following this user."}, status=status.HTTP_409_CONFLICT)
 
         if follower == following:
-            return Response({"detail": "You cannot follow yourself."})
+            return Response({"detail": "You cannot follow yourself."}, status=status.HTTP_400_BAD_REQUEST)
 
         Follow.objects.create(follower=follower, following=following)
         get_user_model().objects.filter(id=follower.id).update(following_count=F('following_count') + 1)
