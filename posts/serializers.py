@@ -52,7 +52,7 @@ class PostCreateSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         tags = validated_data.pop('tags', [])
-        instance.title = validated_data.get('content', instance.content)
+        instance.content = validated_data.get('content', instance.content)
         instance.photo = validated_data.get('photo', instance.photo)
 
         if tags:
