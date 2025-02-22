@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 from chats.models import Chat, Message
 from posts.models import Post
-from search.filters import get_filtered_chats, get_filtered_users
+from search.filters import get_filtered_chats, get_filtered_users, get_filtered_posts
 from search.serializers import ChatSearchSerializer, MessageSearchSerializer, PostSearchSerializer, UserSearchSerializer
 
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
@@ -44,11 +44,9 @@ class PostsSearchAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        author = self.request.GET.get('author')
         keyword = self.request.GET.get('keyword')
-        query = SearchQuery(keyword)
-        results = Post.objects.annotate(
-            rank=SearchRank(F('search_vector'), query)
-        ).filter(search_vector=query).order_by('-rank')
+        results = get_filtered_posts(author, keyword)
 
         return results
 
