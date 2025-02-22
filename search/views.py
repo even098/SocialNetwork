@@ -1,5 +1,6 @@
 from django.db.models import Q, F
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -21,6 +22,9 @@ class ChatsSearchAPIView(ListAPIView):
         name = self.request.GET.get('name')
         users = self.request.GET.get('users')
 
+        if (name and len(name) > 100) or (users and len(users) > 50):
+            raise ValidationError('Name or users field is too long!')
+
         return get_filtered_chats(self.request.user, name, users)
 
 
@@ -30,6 +34,10 @@ class MessagesSearchAPIView(ListAPIView):
 
     def get_queryset(self):
         keyword = self.request.GET.get('keyword')
+
+        if keyword and len(keyword) > 100:
+            raise ValidationError('Keyword is too long!')
+
         query = SearchQuery(keyword)
 
         results = Message.objects.annotate(
@@ -46,6 +54,10 @@ class PostsSearchAPIView(ListAPIView):
     def get_queryset(self):
         author = self.request.GET.get('author')
         keyword = self.request.GET.get('keyword')
+
+        if (keyword and len(keyword) > 100) or (author and len(author) > 50):
+            raise ValidationError('Keyword or author field is too long!')
+
         results = get_filtered_posts(author, keyword)
 
         return results
@@ -57,5 +69,9 @@ class UsersSearchAPIView(ListAPIView):
 
     def get_queryset(self):
         keyword = self.request.GET.get('keyword')
+
+        if keyword and len(keyword) > 100:
+            raise ValidationError('Keyword is too long!')
+
         results = get_filtered_users(keyword)
         return results
