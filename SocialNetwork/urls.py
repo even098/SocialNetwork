@@ -1,6 +1,9 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.gis import feeds
 from django.urls import path, include
+
+from SocialNetwork import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,4 +15,4 @@ urlpatterns = [
     path('api/v1/notifications/', include('notifications.urls')),
     path('api/v1/chats/', include("chats.urls")),
     path('api/v1/search/', include("search.urls"))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
