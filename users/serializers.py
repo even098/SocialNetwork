@@ -24,7 +24,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        if not UserModel.objects.filter(email=validated_data['email']).exists():
+        try:
             user = UserModel.objects.create_user(
                 username=validated_data['username'],
                 email=validated_data['email'],
@@ -38,7 +38,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
                 is_active=False
             )
             return user
-        raise serializers.ValidationError({'message': 'Email already exists'})
+        except Exception as e:
+            raise serializers.ValidationError({'error': str(e)})
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
