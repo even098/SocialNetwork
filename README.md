@@ -8,7 +8,7 @@ API социальной сети, где пользователи могут в
 - **Djoser + SimpleJWT** (аутентификация и регистрация)
 - **Google OAuth** (вход через Google)
 - **TaggableManager** (работа с тегами)
-- **WSL Ubuntu** (рабочая среда)
+- **Websockets** (реализация чатов)
 - **PostgreSQL** (БД)
 
 ## Функционал
@@ -57,57 +57,54 @@ python manage.py runserver
 
 ## Доступные эндпойнты
 
-### Аутентификация
-| Метод  | Эндпойнт               | Данные | Описание |
-|--------|------------------------|--------|----------|
-| POST   | `/auth/jwt/create/`    | `{email, password}` | Получение JWT-токена |
-| Ответ  |                        | `{access, refresh}` |
-| POST   | `/auth/users/`         | `{email, password}` | Регистрация нового пользователя |
-| Ответ  |                        | `{id, email, username}` |
-| POST   | `/auth/jwt/refresh/`   | `{refresh}` | Обновление access-токена |
-| Ответ  |                        | `{access}` |
+### Аутентификация (Djoser)
+| Метод  | Эндпойнт                      | Данные | Описание |
+|--------|-------------------------------|--------|----------|
+| POST   | `/auth/users/`                | `{email, password}` | Регистрация нового пользователя |
+| POST   | `/auth/users/activation/`     | `{uid, token}` | Активация аккаунта (если включена) |
+| POST   | `/auth/users/resend_activation/` | `{email}` | Повторная отправка активационного письма |
+| POST   | `/auth/users/reset_password/` | `{email}` | Запрос на сброс пароля |
+| POST   | `/auth/users/reset_password_confirm/` | `{uid, token, new_password}` | Подтверждение сброса пароля |
+| POST   | `/auth/users/set_password/`   | `{current_password, new_password}` | Смена пароля |
+| POST   | `/auth/users/set_username/`   | `{current_password, new_username}` | Смена имени пользователя |
+| GET    | `/auth/users/me/`             | - | Получение информации о текущем пользователе |
+| PATCH  | `/auth/users/me/`             | `{username, email}` | Обновление информации о пользователе |
+| GET    | `/auth/users/`                | - | Список пользователей |
+| GET    | `/auth/users/{id}/`           | - | Детальная информация о пользователе |
+| POST   | `/auth/jwt/create/`           | `{email, password}` | Получение JWT-токена |
+| POST   | `/auth/jwt/refresh/`          | `{refresh}` | Обновление access-токена |
+| POST   | `/auth/jwt/verify/`           | `{token}` | Проверка валидности токена |
 
 ### Посты
 | Метод  | Эндпойнт        | Данные | Описание |
 |--------|----------------|--------|----------|
 | GET    | `/posts/`      | - | Получение списка постов |
-| Ответ  |                | `[{id, title, photo, tags}]` |
 | POST   | `/posts/`      | `{title, photo, tags}` | Создание нового поста |
-| Ответ  |                | `{id, title, photo, tags}` |
 | GET    | `/posts/{id}/` | - | Получение деталей поста |
-| Ответ  |                | `{id, title, photo, tags, comments}` |
 | PUT    | `/posts/{id}/` | `{title, photo, tags}` | Редактирование поста |
-| Ответ  |                | `{id, title, photo, tags}` |
 | DELETE | `/posts/{id}/` | - | Удаление поста |
 
 ### Комментарии
 | Метод  | Эндпойнт                     | Данные | Описание |
 |--------|------------------------------|--------|----------|
 | GET    | `/posts/{id}/comments/`      | - | Получение комментариев к посту |
-| Ответ  |                              | `[{id, text, author, likes}]` |
 | POST   | `/posts/{id}/comments/`      | `{text}` | Добавление комментария |
-| Ответ  |                              | `{id, text, author, likes}` |
 | DELETE | `/comments/{id}/`            | - | Удаление комментария |
 
 ### Лайки
 | Метод  | Эндпойнт                 | Данные | Описание |
 |--------|--------------------------|--------|----------|
 | POST   | `/posts/{id}/like/`      | - | Лайк/дизлайк поста |
-| Ответ  |                          | `{likes_count}` |
 | POST   | `/comments/{id}/like/`   | - | Лайк/дизлайк комментария |
-| Ответ  |                          | `{likes_count}` |
 
 ### Подписки
 | Метод  | Эндпойнт                 | Данные | Описание |
 |--------|--------------------------|--------|----------|
 | POST   | `/users/{id}/follow/`    | - | Подписка на пользователя |
-| Ответ  |                          | `{follower_count}` |
 | DELETE | `/users/{id}/unfollow/`  | - | Отписка от пользователя |
-| Ответ  |                          | `{follower_count}` |
 
 ### Уведомления
 | Метод  | Эндпойнт          | Данные | Описание |
 |--------|-------------------|--------|----------|
 | GET    | `/notifications/` | - | Получение списка уведомлений |
-| Ответ  |                   | `[{id, type, message, created_at}]` |
 
